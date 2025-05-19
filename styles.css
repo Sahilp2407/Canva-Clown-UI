@@ -1,0 +1,232 @@
+/* 🌈 Gradient Glow Animation on Buttons + Ripple + Hover */
+button {
+  background: linear-gradient(135deg, #8C52FF, #FF52C1);
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(140, 82, 255, 0.4);
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(255, 82, 193, 0.5);
+}
+
+button:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 8px rgba(140, 82, 255, 0.4);
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.5s, opacity 1s;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+}
+
+button:active::after {
+  transform: scale(1);
+  opacity: 1;
+  transition: 0s;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Category card hover scale and shadow */
+.category-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(140, 82, 255, 0.3);
+}
+
+/* ✨ Glassmorphism Styling ✨ */
+.category-card,
+.scroll-category-card,
+.section {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+/* Hero fade-in animation */
+.hero {
+  opacity: 0;
+  animation: fadeInHero 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInHero {
+  to {
+    opacity: 1;
+  }
+}
+
+/* 🎯 Scroll-triggered fade & slide animation */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-animate.visible {
+  animation: fadeSlideUp 0.8s ease forwards;
+}
+
+/* Smooth horizontal scroll */
+.scroll-card-container {
+  scroll-behavior: smooth;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 600px) {
+  header {
+    flex-wrap: wrap;
+    padding: 10px 15px;
+  }
+
+  nav {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  nav a {
+    margin: 5px 8px;
+    font-size: 14px;
+  }
+
+  .cta-buttons {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .login-btn, .signup-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .hero {
+    padding: 40px 15px 20px;
+    max-width: 100%;
+    border-radius: 15px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .hero button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .category-container {
+    max-width: 100%;
+    gap: 15px;
+    padding: 0 10px;
+    justify-content: center;
+  }
+
+  .category-card {
+    width: 90px;
+    padding: 15px 10px;
+  }
+
+  .category-card img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .category-card p {
+    font-size: 14px;
+  }
+
+  .scroll-card-container {
+    padding: 15px 20px;
+    gap: 15px;
+  }
+
+  .scroll-category-card {
+    flex: 0 0 150px;
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .scroll-category-title {
+    font-size: 16px;
+  }
+
+  .extra-section-container {
+    max-width: 100%;
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .section {
+    width: 140px;
+    padding: 15px;
+  }
+
+  .section img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .section p {
+    font-size: 14px;
+  }
+}

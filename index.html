@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Canva Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f7e1ff, #d7dfff);
+    }
+
+    /* Header styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4A4AFA;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+    }
+
+    .cta-buttons button {
+      margin-left: 10px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .login-btn {
+      background-color: white;
+      border: 1px solid #ccc;
+    }
+
+    .signup-btn {
+      background-color: #8C52FF;
+      color: white;
+    }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px 30px;
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 20px;
+      margin: 30px auto;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #8C52FF;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      background-color: #8C52FF;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Categories and sections */
+    .category-container,
+    .extra-section-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px auto;
+      padding: 0 20px;
+      max-width: 1200px;
+    }
+
+    .category-card,
+    .section {
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      width: 120px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .category-card img,
+    .section img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .category-card p,
+    .section p {
+      margin: 10px 0 0;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* Scrollable section */
+    .scroll-card-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px 40px;
+      scroll-snap-type: x mandatory;
+      margin: 40px 0;
+    }
+
+    .scroll-category-card {
+      flex: 0 0 200px;
+      border-radius: 20px;
+      padding: 20px;
+      color: #fff;
+      font-weight: bold;
+      scroll-snap-align: start;
+      position: relative;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .scroll-category-card:hover {
+      transform: scale(1.05);
+    }
+
+    .scroll-category-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .scroll-category-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .whiteboard { background: linear-gradient(to bottom, #6cc389, #007e51); }
+    .presentation { background: linear-gradient(to bottom, #fbd786, #f7797d); }
+    .social { background: linear-gradient(to bottom, #ff5858, #f857a6); }
+    .videos { background: linear-gradient(to bottom, #f093fb, #f5576c); }
+    .prints { background: linear-gradient(to bottom, #8e2de2, #4a00e0); }
+    .websites { background: linear-gradient(to bottom, #2980b9, #6dd5fa); }
+
+    ::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+
+    /* Animation classes */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Canva</div>
+    <nav>
+      <a href="#">Design spotlight</a>
+      <a href="#">Business</a>
+      <a href="#">Education</a>
+      <a href="#">Plans and pricing</a>
+      <a href="#">Learn</a>
+    </nav>
+    <div class="cta-buttons">
+      <button class="login-btn" onclick="location.href='login.html'">Log in</button>
+      <button class="signup-btn" onclick="location.href='signup.html'">Sign up</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Where heart meets <span>art</span>.</h1>
+    <p>Canva makes it easy to create and share professional designs.</p>
+    <button onclick="location.href='design.html'">Start designing</button>
+  </section>
+
+  <!-- Category Cards -->
+  <div class="category-container">
+    <div class="category-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Docs">
+      <p>Docs</p>
+    </div>
+    <div class="category-card">
+      <img src="https://marketplace.canva.com/EAGDeUtGK1E/1/0/800w/canva-health-whiteboard-in-sky-blue-indigo-black-and-white-style-ue5o0R9Tzow.jpg" alt="Whiteboards">
+      <p>Whiteboards</p>
+    </div>
+    <div class="category-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Presentations">
+      <p>Presentations</p>
+    </div>
+    <div class="category-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Social">
+      <p>Social</p>
+    </div>
+    <div class="category-card">
+      <img src="https://th.bing.com/th/id/OIP.azP7saUMA8x4K3ClQbuzSwHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="Videos">
+      <p>Videos</p>
+    </div>
+    <div class="category-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/6811/6811681.png" alt="Prints">
+      <p>Prints</p>
+    </div>
+  </div>
+
+  <!-- Scrollable Cards -->
+  <div class="scroll-card-container">
+    <div class="scroll-category-card whiteboard">
+      <div class="scroll-category-title">Whiteboards</div>
+      <img src="https://cdn-icons-png.flaticon.com/512/2909/2909732.png" alt="Whiteboard" />
+    </div>
+    <div class="scroll-category-card presentation">
+      <div class="scroll-category-title">Presentations</div>
+      <img src="https://cdn-icons-png.flaticon.com/512/2909/2909756.png" alt="Presentations" />
+    </div>
+    <div class="scroll-category-card social">
+      <div class="scroll-category-title">Social</div>
+      <img src="https://cdn-icons-png.flaticon.com/512/3670/3670032.png" alt="Social" />
+    </div>
+    <div class="scroll-category-card videos">
+      <div class="scroll-category-title">Videos</div>
+      <img src="https://cdn-icons-png.flaticon.com/512/9533/9533155.png" alt="Videos" />
+    </div>
+    <div class="scroll-category-card prints">
+      <div class="scroll-category-title">Prints</div>
+      <img src="https://cdn-icons-png.flaticon.com/512/3523/3523063.png" alt="Prints" />
+    </div>
+    <div class="scroll-category-card websites">
+      <div class="scroll-category-title">Websites</div>
+      <img src="https://cdn-icons-png.flaticon.com/512/1011/1011360.png" alt="Websites" />
+    </div>
+  </div>
+
+  <!-- Extra Sections -->
+  <div class="extra-section-container">
+    <div class="section">
+      <img src="https://cdn-icons-png.flaticon.com/512/545/545705.png" alt="New Section 1">
+      <p>New Section 1</p>
+    </div>
+    <div class="section">
+      <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="New Section 2">
+      <p>New Section 2</p>
+    </div>
+  </div>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+      });
+
+      document.querySelectorAll(".category-card, .section").forEach(el => {
+        el.classList.add("scroll-animate");
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
