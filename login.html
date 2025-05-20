@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Canva Clone</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #f7e1ff, #d7dfff);
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-container {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+    h2 {
+      text-align: center;
+      color: #8C52FF;
+    }
+    input {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      background-color: #8C52FF;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    a {
+      display: block;
+      margin-top: 10px;
+      text-align: center;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Log In</h2>
+    <input type="email" id="loginEmail" placeholder="Email" required>
+    <input type="password" id="loginPassword" placeholder="Password" required>
+    <button onclick="login()">Log In</button>
+    <a href="signup.html">Don't have an account? Sign up</a>
+  </div>
+
+  <script>
+    function login() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const user = JSON.parse(localStorage.getItem("canvaUser"));
+
+      if (!user) {
+        alert("No user found. Please sign up first.");
+        return;
+      }
+
+      if (email === user.email && password === user.password) {
+        alert("Login successful!");
+        localStorage.setItem("isLoggedIn", true);
+        window.location.href = "index.html";
+      } else {
+        alert("Invalid email or password.");
+      }
+    }
+  </script>
+</body>
+</html>
